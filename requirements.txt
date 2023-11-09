@@ -1,0 +1,6 @@
+requests==2.26.0
+Flask==2.0.1
+pymongo==4.1.1
+bs4
+BeautifulSoup
+tkinter
