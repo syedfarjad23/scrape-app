@@ -1,20 +1,16 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8
+# Frontend Dockerfile
+FROM node:14-alpine
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+COPY package.json ./
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+RUN npm install
 
-# Copy the rest of the application code into the container
 COPY . .
 
-# Expose the port your application runs on
-EXPOSE 8080
+RUN npm run build
 
-# Define the command to run your application
-CMD ["python", "app.py"]
+EXPOSE 5001
+
+CMD ["npm", "start"]
